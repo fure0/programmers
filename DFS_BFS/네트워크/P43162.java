@@ -1,9 +1,15 @@
 public class P43162 {
+
+  static boolean[] check;
   
   public static void main(String[] args) {
 
     int n = 3;
-    int[][] computers = {{1, 1, 0}, {1, 1, 0}, {0, 0, 1}};
+    int[][] computers = {
+      {1, 1, 0}, 
+      {1, 1, 0}, 
+      {0, 0, 1}
+    };
 
     int result = solution(n, computers);
     System.out.println(result);
@@ -11,11 +17,11 @@ public class P43162 {
 
   static int solution(int n, int[][] computers) {
     int answer = 0;
-    boolean[] check = new boolean[n]; // n 갯수만큼 boolean 배열을 만들고 모든 요소를 false로 초기화
+    check = new boolean[n]; // n 갯수만큼 boolean 배열을 만들고 모든 요소를 false로 초기화
 
     for (int i = 0; i < n; i++) {
       if (!check[i]) {
-        dfs(computers, i, check);
+        dfs(computers, i);
         answer++;
       }
     }
@@ -23,15 +29,14 @@ public class P43162 {
     return answer;
   }
 
-  static boolean[] dfs(int[][] computers, int i, boolean[] check) {
+  static void dfs(int[][] computers, int i) {
     check[i] = true;
 
     for (int j = 0; j < computers.length; j++) {
       if (i != j && computers[i][j] == 1 && check[j] == false) {
-        check = dfs(computers, j, check);
+        dfs(computers, j);
       }
     }
-    return check;
   }
 }
 
