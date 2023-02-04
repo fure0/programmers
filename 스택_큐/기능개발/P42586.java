@@ -26,7 +26,10 @@ public class P42586 {
             int day = queue.poll();
             int cnt = 1;
             
-            while(!queue.isEmpty() && day >= queue.peek()){ // 앞기능보다 뒷 기능이 먼저 or 동시에 개발되는 경우
+            // 앞기능보다 뒷 기능이 먼저 or 동시에 개발되는 경우
+            // 앞에 것이 오래 걸리기 더 오래 걸리기 떄문에 앞에 것과 뒤에것아 동시에 릴리즈 된다.
+            // 앞에 것이 릴리즈 되기 전에 뒤에것이 먼저 될 수 없다.
+            while(!queue.isEmpty() && day >= queue.peek()){
                 cnt++;
                 queue.poll();
             }

@@ -20,7 +20,7 @@ public class P42883 {
           1231234 -> 남은자릿수 4, 1231234 중 가장 큰 수는 3
           xxx1234 -> 남은자릿수 3, xxx1234 중 가장 큰 수는 2
           xxxxx34 -> 남은자릿수 2, xxxxx34 중 가장 큰 수는 3
-          xxxxx34 -> 남은자릿수 1, xxxxxx4 중 가장 큰 수는 4
+          xxxxxx4 -> 남은자릿수 1, xxxxxx4 중 가장 큰 수는 4
         */
         for (int j = index; j <= i + k; j++) {
           int current = number.charAt(j) - '0';
